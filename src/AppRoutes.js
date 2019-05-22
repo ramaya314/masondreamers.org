@@ -1,17 +1,9 @@
 import React from 'react';
 
-import {
-  Route
-} from 'react-router-dom';
 
 
-import MasonDreamersContactPage from './pages/MasonDreamersContactPage';
-import UndocuAllyDirectoryPage from './pages/UndocuAllyDirectoryPage';
-import DACASanctuaryPetitionPage from './pages/DACASanctuaryPetitionPage';
-import DACAPetitionSignaturesPage from './pages/DACAPetitionSignaturesPage';
-
+import AGLetterFullPage from './pages/AGLetterFullPage';
 import AdvisoryBoardPage from './pages/AdvisoryBoardPage';
-import AdvisoryBoardTable from './components/AdvisoryBoardTable';
 import EventsPage from './pages/EventsPage';
 import ContactUsPage from './pages/ContactUsPage';
 import MeetOurTeamPage from './pages/MeetOurTeamPage';
@@ -20,21 +12,33 @@ import SupportUsPage from './pages/SupportUsPage';
 import BecomeAnAllyPage from './pages/BecomeAnAllyPage';
 import NewsPage from './pages/NewsPage';
 import GalleryPage from './pages/GalleryPage';
+import EventPage from './pages/EventPage';
+import HomePage from './pages/HomePage';
+import AboutUsPage from './pages/AboutUsPage';
+import LobbyFormPage from './pages/LobbyFormPage';
+import BlogPage from './pages/BlogPage';
+import ScholarshipsPage from './pages/ScholarshipsPage';
 
-import ScrollToTopRoute from './components/ScrollToTopRoute'
-
-import Master from './Master';
+import {
+    ScrollToTopRoute
+} from 'kokolib';
 
 const AppRoutes = (
   <div>
 
-    <ScrollToTopRoute exact path="/" component={Master}>
+    <ScrollToTopRoute exact path="/" component={HomePage}>
+    </ScrollToTopRoute>
+
+    <ScrollToTopRoute exact path="/aboutUs" component={AboutUsPage}>
     </ScrollToTopRoute>
 
     <ScrollToTopRoute path="/advBoard" component={AdvisoryBoardPage}>
     </ScrollToTopRoute>
 
-    <ScrollToTopRoute path="/events" component={EventsPage}>
+    <ScrollToTopRoute exact path="/events" component={EventsPage}>
+    </ScrollToTopRoute>
+
+    <ScrollToTopRoute path="/events/:eventId" component={EventPage}>
     </ScrollToTopRoute>
 
     <ScrollToTopRoute path="/contactus" component={ContactUsPage}>
@@ -53,22 +57,26 @@ const AppRoutes = (
     <ScrollToTopRoute path="/supportus" component={SupportUsPage}>
     </ScrollToTopRoute>
 
-    <ScrollToTopRoute path="/news" component={NewsPage}>
+    <ScrollToTopRoute path="/medianews" component={NewsPage}>
     </ScrollToTopRoute>
 
     <ScrollToTopRoute path="/gallery" component={GalleryPage}>
     </ScrollToTopRoute>
 
-    <Route path="/masondreamerscontact" component={MasonDreamersContactPage}>
-    </Route>
-    <Route path="/undocuallydirectory" component={UndocuAllyDirectoryPage}>
-    </Route>
-    <Route path="/dacaSanctuaryPetition" component={DACASanctuaryPetitionPage}>
-    </Route>
-    <Route path="/dacaSanctuaryPetitionSignatures" component={DACAPetitionSignaturesPage}>
-    </Route>
-    <Route path="/advisoryBoard" component={AdvisoryBoardTable}>
-    </Route>
+    <ScrollToTopRoute path="/scholarships" component={ScholarshipsPage}>
+    </ScrollToTopRoute>
+
+    <ScrollToTopRoute path="/agletterfull" component={AGLetterFullPage}>
+    </ScrollToTopRoute>
+
+    <ScrollToTopRoute path="/joinrapidresponseteam" component={LobbyFormPage}>
+    </ScrollToTopRoute>
+
+    <ScrollToTopRoute exact path="/news" component={BlogPage}>
+    </ScrollToTopRoute>
+
+    <ScrollToTopRoute path="/news/:postId" component={BlogPage}>
+    </ScrollToTopRoute>
 
   </div>
 );

@@ -1,8 +1,11 @@
 import React from 'react';
 
-import Spacer from "../Spacer";
+import {
+	Spacer,
+	PlainIconButton
+} from 'kokolib';
 
-import {Col, Row, Image} from 'react-bootstrap';
+import {Col, Row} from 'react-bootstrap';
 
 class RsvpUndocuAlly extends React.Component
 {
@@ -26,16 +29,7 @@ class RsvpUndocuAlly extends React.Component
 	  			<Spacer space={10} />
 				<Row>
 					<Col xs={12}>
-						 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfafk10stnXrYQcGQlIQP3ZfBC_drCr90zn_LuUOvizuMU1WQ/viewform?embedded=true" 
-						 width="100%" 
-						 height="800" 
-						 frameborder="0" 
-						 marginheight="0" 
-						 marginwidth="0"
-						 style={{border:0}}
-						 >
-						 	Loading...
-						 </iframe>
+						<PlainIconButton link="/events" content="Next Events" iconContent="\f133" />
 					</Col>
 					
 				</Row>

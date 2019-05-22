@@ -1,8 +1,10 @@
 import React from 'react';
 
-import {Col, Row, Image} from 'react-bootstrap';
+import {Col, Row} from 'react-bootstrap';
 
-import Spacer from "../Spacer";
+import {
+	Spacer
+} from 'kokolib';
 
 import GridGallery from "../GridGallery"
 

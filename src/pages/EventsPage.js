@@ -1,124 +1,111 @@
 import React from 'react';
 
 import MainNavBar from '../components/MainNavBar';
-import MainFooter from '../components/MainFooter';
-import GridGallery from '../components/GridGallery';
 
-import { Image, Grid, Col, Row } from 'react-bootstrap';
+import Paper from '@material-ui/core/Paper';
+
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
+import {Grid, Col, Row } from 'react-bootstrap';
+
+import Dimensions from 'react-dimensions';
+
+import MetaTags from 'react-meta-tags';
+import {
+	Spacer,
+	EventListView
+} from 'kokolib';
 
 class EventsPage extends React.Component
 {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			isLoading : true,
-		}
-	}   
+  state = {
+    selectedTab: 'next',
+  };
 
-
-	getStyles() {
-		const styles = {
-			spacer: {
-				marginTop: 30,
-			},
-		};
-		return styles;
-	}
-
-	componentWillMount() {
-	}
+  handleTabChange = (event, selectedTab) => {
+    this.setState({ selectedTab });
+  };
 
 	render() {
 
-		const styles = this.getStyles();
+		let smallScreen = this.props.containerWidth < 768;
+		let largeScreen = this.props.containerWidth >= 1200;
+		let mediumScreen = !smallScreen && !largeScreen;
 
 		return(
 			<div>
 
 	  			<MainNavBar backgroundImage="/images/butterUndocu.png" pageTitle="Events" />
 
-	  			<div style={styles.spacer} />
-	  			
+				<MetaTags>
+					<title>Mason DREAMers | Events</title>
+					<meta id="ogDescription" name="ogDescription" property="og:description" content="Past and Future Events" />
+					<meta id="ogTitle" name="ogTitle" property="og:title" content="Events" />
+					<meta id="ogImage" name="ogImage" property="og:image" content="http://www.masondreamers.org/images/butterUndocu.png" />
+				</MetaTags>
+
+	  			<Spacer space={30} />
+
 				<Grid className="mainPageContentGrid">
-					<Row>
-						<Col xs={12} sm={6} md={8}>
-							<Row>
-								<Col>
-									<h1> UndocuAlly Training </h1>
-								</Col>
-							</Row>
-							<Row>
-								<Col>
-									<div>
-										The purpose of UndocuAlly is for participants to leave this 
-										training with an understanding of the history, 
-										legislation and current/ future realities of our 
-										undocumented student community. 
-										We hope to create a more inclusive and supportive environment 
-										for undocumented and students of various statuses in higher 
-										education.
-									</div>
-								</Col>
-							</Row>
-							<Row>
-								<Col xs={6} sm={6} >
-									<Image src="/images/UndocuAlly.png" responsive rounded/>
-								</Col>
-								<Col xs={6} sm={6} >
-									<h2>
-										Dates and Times
-									</h2>
-									<div>
-										(Check back later)
-									</div>
-								</Col>
-							</Row>
-						</Col>
-						<Col xs={12} sm={6} md={4}>
+					<Paper  style={{padding:15}} zDepth={3}>
 
-							<iframe src="https://calendar.google.com/calendar/embed?src=gmumasondreamers%40gmail.com&ctz=America/New_York" 
-								style={{borderWidth:0}} 
-								width="100%" 
-								height="350px"
-								frameborder="0" scrolling="no"></iframe>
-						</Col>
-					</Row>
+						<Tabs value={this.state.selectedTab} onChange={this.handleTabChange}>
+							<Tab value="next" label="Next Events" />
+							<Tab value="past" label="Past Events" />
+						</Tabs>
 
-					<Row>
-						<Col>
-							<h1>Past Events</h1>
-						</Col>
-					</Row>
-					<Row>
-						<GridGallery data={ {picRows: [
-							{pics: [
-								{source: "/images/pastEvents/md_orig.png", index:0},
-								{source: "/images/pastEvents/undocuAndUnafraid.png", index:1},
-								{source: "/images/pastEvents/nextSteps.jpg", index:2},
-								{source: "/images/pastEvents/immMonologues.jpg", index:3},
-								{source: "/images/pastEvents/comConversation.png", index:4},
-								{source: "/images/pastEvents/pandaFundraiser.png", index:5}
-								]
-							}
-						]}} opts={{
-							xs:12,
-							sm:6,
-							md:3,
-							lg:2
-						}} />
-					</Row>
+						{this.state.selectedTab === 'next' &&
+							<div  style={{padding:(smallScreen ? 0 : (mediumScreen ? 15 : 30)) }}>
+								<Row>
+									<Col xs={12}>
+										<h1>Upcoming</h1>
+									</Col>
+								</Row>
+								<Row>
+									<Col xs={12}>
+										<EventListView  pastEvents={false} nextEvents={true} match={this.props.match}/>
+									</Col>
+								</Row>
 
+								<Row>
+									<Col>
+										<h1>Calendar</h1>
+									</Col>
+								</Row>
+								<Row>
+									<iframe src="https://calendar.google.com/calendar/embed?src=gmumasondreamers%40gmail.com&ctz=America/New_York"
+										style={{borderWidth:0}}
+										width="100%"
+										height="450px"
+										frameBorder="0" scrolling="no"></iframe>
+								</Row>
+							</div>
+						}
+
+						{this.state.selectedTab === 'past' &&
+							<div style={{padding:(smallScreen ? 0 : (mediumScreen ? 15 : 30)) }}>
+								<Row>
+									<Col xs={12}>
+										<h1>Past</h1>
+									</Col>
+								</Row>
+								<Row>
+									<Col xs={12}>
+										<EventListView pastEvents={true} nextEvents={false}  match={this.props.match}/>
+									</Col>
+								</Row>
+							</div>
+						}
+
+
+					</Paper>
 				</Grid>
-
-
-	  			<div style={styles.spacer} />
-
-		  		<MainFooter />
 			</div>
 		);
 	}
 }
 
 
-export default EventsPage;
+export default Dimensions()(EventsPage);

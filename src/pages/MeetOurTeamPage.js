@@ -1,75 +1,22 @@
 import React from 'react';
 
-import Loading from 'react-loading';
-import Utils from '../Utils';
-
 import MainNavBar from '../components/MainNavBar';
-import MainFooter from '../components/MainFooter';
-
 import ReactExpandableGrid from "../components/ReactExpandableGrid";
 
-var teamData = require("./teamData.json");
-
+import Paper from '@material-ui/core/Paper';
 import { Grid, Col, Row } from 'react-bootstrap';
+
+import MetaTags from 'react-meta-tags';
+import {
+	DataContainer,
+	Spacer,
+	Utils
+} from 'kokolib';
 
 class MeetOurTeamPage extends React.Component
 {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			isLoading : true,
-			teamData: null,
-		}
-	}   
-
-	componentWillMount() {
-		this.getData();
-	}
-
-	getStyles() {
-		const styles = {
-			spacer: {
-				marginTop: 30,
-			},
-		};
-		return styles;
-	}
-
-	getData() {
-
-		let host = window.location.protocol + "//" +
-					window.location.hostname +
-					(window.location.hostname.toLowerCase().indexOf('localhost') >= 0 ? ":4000" :
-						(window.location.port ? ":" + window.location.port : ""));
-
-		let action = "/GetEBoardData";
-
-		let fullRequest = host + action;
-		var that = this;
-
-		fetch(fullRequest, {
-			method : "GET",
-		}).then(function(res) {
-			if (res.ok) {
-				res.json().then(function(json) {
-					var data = Utils.prepareGSArrayForTable(json);
-					that.setState({
-						teamData : data,
-						isLoading: false,
-					});
-				}); 
-			} else if (res.status === 401) {
-				console.log(res);
-			}
-		}, function(e) {
-			console.log(e);
-		});
-	}
- 
 	render() {
-
-		const styles = this.getStyles();
 
 		return(
 
@@ -77,29 +24,29 @@ class MeetOurTeamPage extends React.Component
 
 	  			<MainNavBar backgroundImage="/images/eBoard.jpg" pageTitle="Meet Our Team" />
 
-	  			<div style={styles.spacer} />
+				<MetaTags>
+					<title>Mason DREAMers | Meet Our Team</title>
+					<meta id="ogDescription" name="ogDescription" property="og:description" content="Meet the Mason DREAMers" />
+					<meta id="ogTitle" name="ogTitle" property="og:title" content="Meet Our Team" />
+					<meta id="ogImage" name="ogImage" property="og:image" content="http://www.masondreamers.org/images/eBoard.jpg" />
+				</MetaTags>
+
+				<Spacer space={30} />
 
 				<Grid className="mainPageContentGrid">
-					<Row>
-						<Col xs={12}>
-
-							<div style={{textAlign:'center', display:(this.state.isLoading ? "" : "none")}}>
-								<div style={{width:64,height:64,marginLeft:'auto',marginRight:'auto'}}>
-									<Loading type='spin' color='#000' />
-								</div>
-							</div>
-
-      						{!this.state.isLoading && 
-	  							<ReactExpandableGrid gridData={JSON.stringify(this.state.teamData)} />
-							}
-
-						</Col>
-					</Row>
+					<Paper zDepth={3}>
+						<Row>
+							<Col xs={12}>
+								<DataContainer action="api/v1/GetEBoardData"
+									resultRender={function(data) {
+										data = Utils.prepareGSArrayForTable(data);
+										return <ReactExpandableGrid gridData={JSON.stringify(data)} />;
+								}}>
+								</DataContainer>
+							</Col>
+						</Row>
+					</Paper>
 				</Grid>
-
-	  			<div style={styles.spacer} />
-
-		  		<MainFooter />
 			</div>
 		)
 	}

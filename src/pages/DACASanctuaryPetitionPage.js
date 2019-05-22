@@ -1,10 +1,10 @@
 import React from 'react';
 
-import RaisedButton from 'material-ui/RaisedButton'
-import ContentCreate from 'material-ui/svg-icons/content/create';
-import withWidth, {MEDIUM} from 'material-ui/utils/withWidth';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
+import RaisedButton from '@material-ui/core/RaisedButton'
+import ContentCreate from '@material-ui/core/svg-icons/content/create';
+import withWidth, {MEDIUM} from '@material-ui/core/utils/withWidth';
+import SelectField from '@material-ui/core/SelectField';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import Loading from 'react-loading';
 
@@ -33,7 +33,7 @@ class DACASanctuaryPetitionPage extends React.Component
                   isLoading: false
 		}
 		this.validatingInputs = [];
-	} 
+	}
 
       componentWillMount() {
             window.atVAl = (verified) => {
@@ -65,9 +65,9 @@ class DACASanctuaryPetitionPage extends React.Component
 
             let action = "/SignDacaPetition";
 
-            let parameters = "?fullname=" + encodeURI(this.state.fullNameField) + 
-                                    "&email=" + encodeURI(this.state.emailField) + 
-                                    "&organization=" + encodeURI(this.state.organizationField) + 
+            let parameters = "?fullname=" + encodeURI(this.state.fullNameField) +
+                                    "&email=" + encodeURI(this.state.emailField) +
+                                    "&organization=" + encodeURI(this.state.organizationField) +
                                     "&iam=" + encodeURI(this.state.iamField) +
                                     "&iamspecific=" + encodeURI(this.state.iAmSpecifyField);
 
@@ -82,7 +82,7 @@ class DACASanctuaryPetitionPage extends React.Component
                               that.setState({isLoading:false});
                               that.setState({currentView: 1});
                               window.scrollTo(0, 0);
-                        }); 
+                        });
                   } else if (res.status === 401) {
                         that.setState({
                               isLoading:false,
@@ -273,7 +273,7 @@ class DACASanctuaryPetitionPage extends React.Component
             				<br />
 
             				<div>
-            					On the night of November 8, 2016, Donald J. Trump became the president-elect of the United States of America. Since then, 
+            					On the night of November 8, 2016, Donald J. Trump became the president-elect of the United States of America. Since then,
             					various initiatives and reactions have sprung up throughout the country in an effort to protect and defend respective underrepresented
             					 groups living in the United States. Among the most predominant groups defended have been the undocumented population, more specifically
             					  undocumented students - otherwise known as “DREAMers.”
@@ -282,26 +282,26 @@ class DACASanctuaryPetitionPage extends React.Component
             				<br />
 
             				<div style={{paddingLeft: 25, fontSize: 12}}>
-            					<b>About DREAMers and DACA.</b> According to the 
+            					<b>About DREAMers and DACA.</b> According to the
             					<a className="masonDreamerLink" href="https://www.americanimmigrationcouncil.org/research/who-and-where-dreamers-are-revised-estimates" target="_blank">
             						American Immigration Council
             					</a>
             					, DREAMers are undocumented or unauthorized youth who were
-            					 brought to the U.S. as children. In 2012, through an executive action under President Barack Obama, 
+            					 brought to the U.S. as children. In 2012, through an executive action under President Barack Obama,
             					 <a className="masonDreamerLink" href="https://www.whitehouse.gov/the-press-office/2012/06/15/remarks-president-immigration" target="_blank" >
             					 	Deferred Action for Childhood Arrivals (DACA)
             					 </a>
             					  provided this segment of the population a temporary relief from deportation and though they
         					    did not attain a lawful status, this measure allowed many of them to work legally, drive and pursue a higher education.
         					    Based upon respective state discretions, it allowed qualifying approved DACAmented youth to attain a temporary work authorization,
-        					     temporary driver licenses, and potential in-state tuition under various criteria. According to 
+        					     temporary driver licenses, and potential in-state tuition under various criteria. According to
         					     <a className="masonDreamerLink" href=" https://www.uscis.gov/tools/reports-studies/immigration-forms-data/data-set-form-i-821d-deferred-action-childhood-arrivals" target="_blank" >
         					     	fiscal year reports from U.S. Citizenship and Immigration Services (USCIS)
         					     </a>
         					     , over 800,000 undocumented individuals have been approved and currently hold this status.
-            					 More information on the guidelines, application process and corresponding fees associated with DACA is available on the 
+            					 More information on the guidelines, application process and corresponding fees associated with DACA is available on the
             					 <a className="masonDreamerLink" href="https://www.uscis.gov/humanitarian/consideration-deferred-action-childhood-arrivals-daca" target="_blank" >
-            					 	USCIS website. 
+            					 	USCIS website.
             					 </a>
             				</div>
 
@@ -309,13 +309,13 @@ class DACASanctuaryPetitionPage extends React.Component
 
             				<div style={{paddingLeft: 25, fontSize: 12}}>
       	      				<b>About the new presidency & expected impact on undocumented students.</b>
-      	      				 Based on the 2016 presidential race and platforms presented by then, presidential candidate, Donald J. Trump, 
-      	      				 there is substantial reason to believe undocumented students will be negatively impacted by the new administration. Based on the 
+      	      				 Based on the 2016 presidential race and platforms presented by then, presidential candidate, Donald J. Trump,
+      	      				 there is substantial reason to believe undocumented students will be negatively impacted by the new administration. Based on the
       	      				 <a className="masonDreamerLink" href="https://www.donaldjtrump.com/policies/immigration/" target="_blank">
-      	      				 	policy overviews  
+      	      				 	policy overviews
       	      				 </a>
-      	      				       &nbsp; he has provided/promised to the general public, President-elect Trump is expected to terminate at least two of President Obama’s 
-      	      				  current executive actions upon taking office. Meaning, programs such as DACA are at high risk of termination, thus potentially 
+      	      				       &nbsp; he has provided/promised to the general public, President-elect Trump is expected to terminate at least two of President Obama’s
+      	      				  current executive actions upon taking office. Meaning, programs such as DACA are at high risk of termination, thus potentially
       	      				  leaving millions of current and prospective college students unable to access higher education and legal work.
             				</div>
 
@@ -325,7 +325,7 @@ class DACASanctuaryPetitionPage extends React.Component
 
       	      				<b>About Mason DREAMers.</b>
       	      				 A nonpartisan student organization with a mission to create a more inclusive environment for undocumented students through education and advocacy since 2011.
-      	      				  More information on the organization can be found at 
+      	      				  More information on the organization can be found at
       	      				  <a className="masonDreamerLink" href="http://www.masondreamers.org/" target="_blank" >
       	      				  	www.masondreamers.org.
       	      				  </a>
@@ -337,11 +337,11 @@ class DACASanctuaryPetitionPage extends React.Component
             				<div style={{fontWeight:'bold'}} >
       						As a result of these anticipated presidential measures, the following petition requests that George Mason University seek to
       						become a well-being university for DREAMers by maintaining in-state tuition rates for current and applicable DACAmented
-      						students and protect them by becoming a sanctuary school.    
+      						students and protect them by becoming a sanctuary school.
             				</div>
 
             				<br />
-            				
+
             				<hr />
 
             				<br />
@@ -351,21 +351,21 @@ class DACASanctuaryPetitionPage extends React.Component
             				</div>
             				<br />
             				<div>
-            					Taking into account the threat that has emerged for a current segment of the student 
-            					population based on the prospective new administration expected to take office this 
-            					upcoming January 20, 2017, Mason DREAMers along with various current and prospective students, faculty, 
-            					and community members, respectfully request that George Mason University’s (GMU) administration and respective 
+            					Taking into account the threat that has emerged for a current segment of the student
+            					population based on the prospective new administration expected to take office this
+            					upcoming January 20, 2017, Mason DREAMers along with various current and prospective students, faculty,
+            					and community members, respectfully request that George Mason University’s (GMU) administration and respective
             					officials push forth efforts to maintain an in-state tuition rate for current and qualifying DACAmented students.
             					 Furthermore, we encourage a serious consideration of publicly becoming a sanctuary campus for undocumented students.
             				</div>
             				<br />
             				<div>
             					Though we understand that the possibility of the later request may be implausible, we believe that George Mason University
-            					 has the responsibility to hold true and obey 
+            					 has the responsibility to hold true and obey
             					 <a className="masonDreamerLink" href="http://www2.ed.gov/policy/gen/guid/fpco/ferpa/index.html" target="_blank" >
             					 	The Family Educational Rights and Privacy Act (FERPA)
             					 </a>
-            					  when dealing with the enrollment 
+            					  when dealing with the enrollment
             					 of undocumented students. Furthermore, we believe it is even more possible for administration and corresponding university officials to
             					 enable current and prospective DACAmented students to maintain and pay in-state tuition rates. The following are reasons for why George
             					 Mason University should opt to act on the above measures:
@@ -375,55 +375,55 @@ class DACASanctuaryPetitionPage extends React.Component
       	      				<li>
       							First and foremost, GMU has in the past, time and time again expressed a commitment to foster a culture of inclusion and
       							belonging within its community. Such cannot be the case if they allow a portion of their current student population to forfeit
-      							their education not based on a weak academic record but rather an immigrant status. 
+      							their education not based on a weak academic record but rather an immigrant status.
       	      				</li>
 
       	      				<li>
-      	      					Due to its diversity, proximity, and commuter friendly environment, GMU is likely to have among the most undocumented students 
-      	      					currently enrolled than most other schools in the state of Virginia (i.e. From 2015-2016 it is estimated that 300 students with 
-      	      					DACA enrolled.  However this figure does not include students with prior DACA enrollment from 2012-2014, nor does it completely 
+      	      					Due to its diversity, proximity, and commuter friendly environment, GMU is likely to have among the most undocumented students
+      	      					currently enrolled than most other schools in the state of Virginia (i.e. From 2015-2016 it is estimated that 300 students with
+      	      					DACA enrolled.  However this figure does not include students with prior DACA enrollment from 2012-2014, nor does it completely
       	      					represent undocumented students or those between visa statuses. As a result, we estimate the figure to be much larger).
       	      				</li>
 
       	      				<li>
-      		      				Additionally, GMU has demonstrated to have a welcoming community that has expressed a growing interest and support for the current 
-      		      				undocumented population. In the last two years, over 1,000 community members have taken part in immigration seminars, outreach initiatives, 
-      		      				and/or UndocuAlly trainings.  
+      		      				Additionally, GMU has demonstrated to have a welcoming community that has expressed a growing interest and support for the current
+      		      				undocumented population. In the last two years, over 1,000 community members have taken part in immigration seminars, outreach initiatives,
+      		      				and/or UndocuAlly trainings.
       	      				</li>
 
       	      				<li>
-      	      					Thanks to committed GMU student organizations that have developed various initiatives to support underrepresented groups (i.e. Mason DREAMers), 
-      	      					George Mason University has elevated its reputation and became a model university for other institutions like Virginia Tech, 
-      	      					Virginia Commonwealth University, University of Virginia, Georgetown University, etc. to follow. 
+      	      					Thanks to committed GMU student organizations that have developed various initiatives to support underrepresented groups (i.e. Mason DREAMers),
+      	      					George Mason University has elevated its reputation and became a model university for other institutions like Virginia Tech,
+      	      					Virginia Commonwealth University, University of Virginia, Georgetown University, etc. to follow.
       	      				</li>
 
       	      				<li>
-      	      					Other universities have already begun to take preventive measures to protect their undocumented student populations, including: Brown 
-      	      					University, Columbia University, University of California - Berkeley, Harvard University, New York University, Northwestern University, 
-      	      					Pomona College, University of Notre Dame, University of Pennsylvania, Yale University and more. 
+      	      					Other universities have already begun to take preventive measures to protect their undocumented student populations, including: Brown
+      	      					University, Columbia University, University of California - Berkeley, Harvard University, New York University, Northwestern University,
+      	      					Pomona College, University of Notre Dame, University of Pennsylvania, Yale University and more.
       	      				</li>
             				</ul>
             				<br />
             				<div>
-            					We understand that whether an undocumented student is assigned in-state or out-of-state tuition is not solely based on the individual public 
-            					institution’s discretion. If George Mason University needs to notify corresponding parties that they will be subject to an out-of-state tuition rate, 
-            					it does not mean it cannot provide and expand institutional support and increase financial assistance that will help maintain an in-state rate for 
-            					qualifying DACAmented individuals. In other words, expanding the scholarship list available for current undocumented students or the applicant cap for 
-            					funds such as the Stay Mason Support Fund, could greatly help cover the difference for many students who would otherwise be subject to an out-of-state rate. 
-            					For example, based on academic record, financial need or merit, undocumented/DACAmented students could be selected to still receive enough institutional 
+            					We understand that whether an undocumented student is assigned in-state or out-of-state tuition is not solely based on the individual public
+            					institution’s discretion. If George Mason University needs to notify corresponding parties that they will be subject to an out-of-state tuition rate,
+            					it does not mean it cannot provide and expand institutional support and increase financial assistance that will help maintain an in-state rate for
+            					qualifying DACAmented individuals. In other words, expanding the scholarship list available for current undocumented students or the applicant cap for
+            					funds such as the Stay Mason Support Fund, could greatly help cover the difference for many students who would otherwise be subject to an out-of-state rate.
+            					For example, based on academic record, financial need or merit, undocumented/DACAmented students could be selected to still receive enough institutional
             					support to cover partial/entire semesters or years while studying at George Mason University.
             				</div>
             				<br />
             				<div>
-            					We ask that you consider the above possibilities and join in support of your current and prospective students. Have no doubt that 
-            					taking action on this matter will serve as testament of George Mason’s commitment to student well-being and belonging. 
-            					You will not stand alone, for other universities and students will stand with you. As a public institution that strives 
-            					to put education first and truly seeks to become a “university for the world,” we believe George Mason University 
-            					administration and school officials have a clear present duty and responsibility to its student population first and 
-            					foremost. Please take into account that as current and prospective students, faculty, alumni, and community members we are 
-            					attempting to do our share in helping transform George Mason University. Now it is up to you as administration, councils and 
-            					deans to push  forth and help make George Mason University into the leader of initiatives like these that will help it become an 
-            					institution for all others to follow on a national scale. 
+            					We ask that you consider the above possibilities and join in support of your current and prospective students. Have no doubt that
+            					taking action on this matter will serve as testament of George Mason’s commitment to student well-being and belonging.
+            					You will not stand alone, for other universities and students will stand with you. As a public institution that strives
+            					to put education first and truly seeks to become a “university for the world,” we believe George Mason University
+            					administration and school officials have a clear present duty and responsibility to its student population first and
+            					foremost. Please take into account that as current and prospective students, faculty, alumni, and community members we are
+            					attempting to do our share in helping transform George Mason University. Now it is up to you as administration, councils and
+            					deans to push  forth and help make George Mason University into the leader of initiatives like these that will help it become an
+            					institution for all others to follow on a national scale.
             				</div>
 
             				<br />
@@ -444,7 +444,7 @@ class DACASanctuaryPetitionPage extends React.Component
                   						<td style={{width:'50%'}} >
             			      				<div style={styles.presidentaDiv} >
             			      					Ana Tobar <br />
-            			      					Internal President, Mason DREAMers	
+            			      					Internal President, Mason DREAMers
             			      				</div>
                   						</td>
                   						<td style={{width:'50%', paddingLeft:'10px'}}>
@@ -464,7 +464,7 @@ class DACASanctuaryPetitionPage extends React.Component
             				<div style={{fontStyle:'italic'}}>
             					<div>
       	      					<b>
-      	      						Public support on this petition has been received from the following organizations and individuals: 
+      	      						Public support on this petition has been received from the following organizations and individuals:
       	      					</b>
             					</div>
                                           <div style={{fontSize:14}}>
@@ -529,25 +529,25 @@ class DACASanctuaryPetitionPage extends React.Component
             					*Sign your full name (First, Last)
             				</div>
             				<div style={{fontStyle: 'italic', fontSize: 10, paddingLeft:'40px'}} >
-            					Please sign this petition ONLY once. For any questions regarding the above please contact Ana Tobar or Danna Chavez Calvi, 
+            					Please sign this petition ONLY once. For any questions regarding the above please contact Ana Tobar or Danna Chavez Calvi,
             					current presidents of Mason DREAMers at  <a className="masonDreamerLink" href="mailto:gmumasondreamers@gmail.com" > gmumasondreamers@gmail.com</a>
             				</div>
 
-      				    <EnhancedTextField name="fullNameField" 
+      				    <EnhancedTextField name="fullNameField"
       				    	value={this.state.fullNameField}
-      				    	hintText="First Name, Last Name" 
-      				    	floatingLabelText="First Name, Last Name" 
+      				    	hintText="First Name, Last Name"
+      				    	floatingLabelText="First Name, Last Name"
       				    	isRequired={true}
-      						fullWidth={true} 
+      						fullWidth={true}
       				    	requiredErrorText="Your full name is required"
-      				    	onChange={this.handleTextFieldChange} 
+      				    	onChange={this.handleTextFieldChange}
       				    	onFormRegister={this.registerValidatingInput}/>
 
 
       			        <SelectField
       			          floatingLabelText="I am..."
       			          value={this.state.iamField}
-      			          onChange={this.handleIAmSelectChange} 
+      			          onChange={this.handleIAmSelectChange}
                                     style={{width:"300px"}}
                                     errorText={this.state.selectFieldErrorText}>
       			          <MenuItem value={"Current GMU student"} primaryText="Current GMU student" />
@@ -560,31 +560,31 @@ class DACASanctuaryPetitionPage extends React.Component
 
 
       					{this.state.iamField === "Other: Please specify" &&
-      					    <EnhancedTextField name="iAmSpecifyField" 
+      					    <EnhancedTextField name="iAmSpecifyField"
       					    	value={this.state.iAmSpecifyField}
-      					    	hintText="Other:" 
-      					    	floatingLabelText="Other:" 
+      					    	hintText="Other:"
+      					    	floatingLabelText="Other:"
       					    	isRequired={false}
-      							fullWidth={true} 
-      					    	onChange={this.handleTextFieldChange} 
+      							fullWidth={true}
+      					    	onChange={this.handleTextFieldChange}
       					    	onFormRegister={this.registerValidatingInput}/>
       				    }
 
-      				    <EnhancedTextField name="organizationField" 
+      				    <EnhancedTextField name="organizationField"
       				    	value={this.state.organizationField}
-      				    	hintText="Affiliated Organization" 
-      				    	floatingLabelText="Affiliated Organization" 
+      				    	hintText="Affiliated Organization"
+      				    	floatingLabelText="Affiliated Organization"
       				    	isRequired={false}
-      						fullWidth={true} 
-      				    	onChange={this.handleTextFieldChange} 
+      						fullWidth={true}
+      				    	onChange={this.handleTextFieldChange}
       				    	onFormRegister={this.registerValidatingInput}/>
 
 
-      				    <EnhancedTextField name="emailField" 
+      				    <EnhancedTextField name="emailField"
       				    	value={this.state.emailField}
-      				    	hintText="Email" 
-      				    	floatingLabelText="Email" 
-      						fullWidth={true} 
+      				    	hintText="Email"
+      				    	floatingLabelText="Email"
+      						fullWidth={true}
       				    	isRequired={false}
       				    	validationType="email"
       				    	formatErrorText="Please enter a valid email address"
@@ -595,7 +595,7 @@ class DACASanctuaryPetitionPage extends React.Component
                                     <br />
 
 
-                                    {this.state.errorDialogOpen && 
+                                    {this.state.errorDialogOpen &&
                                           <div style={styles.errorBox} >
                                                 {this.state.errorDialogText}
                                           </div>
@@ -606,7 +606,7 @@ class DACASanctuaryPetitionPage extends React.Component
                                                       <Loading type='spinningBubbles' color='#cca744' />
                                                 </div>
                                           </div>
-                                    {!this.state.isLoading && 
+                                    {!this.state.isLoading &&
                                           <div style={{textAlign:'center'}} >
             						<RaisedButton
             							label="Sign"

@@ -6,7 +6,7 @@ import Loading from 'react-loading';
 
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 
-import Utils from '../Utils'
+import {Utils} from 'kokolib';
 
 import MasonDreamersFrame from '../components/MasonDreamersFrame';
 

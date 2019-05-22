@@ -4,6 +4,8 @@ import { StickyContainer, Sticky } from 'react-sticky';
 
 import { Grid, Col, Row, Nav, NavItem} from 'react-bootstrap';
 
+import Paper from '@material-ui/core/Paper';
+
 import AutoAffix from 'react-overlays/lib/AutoAffix';
 
 import Waypoint from 'react-waypoint';
@@ -18,14 +20,12 @@ class StickySectionNavigation extends React.Component
 			currentActiveSection: null,
 			sectionWaypoints: [],
 		}
-	}   
+	}
 
 	getStyles() {
 		const styles = {
-			secondaryNav: {
-			},
 			stickyHeader: {
-				top:this.props.topOffset, 
+				top:this.props.topOffset,
 				color: "#006940",
 				fontSize: 26,
 				lineHeight: 34,
@@ -40,9 +40,9 @@ class StickySectionNavigation extends React.Component
     			color: '#097984',
 			},
 			sectionPositionIndicator: {
-				float:"left", 
-				width:0, 
-				height:0, 
+				float:"left",
+				width:0,
+				height:0,
 				transform: 'translateY(-100px)',
 			}
 		};
@@ -89,7 +89,7 @@ class StickySectionNavigation extends React.Component
 						<Col xs={12}  md={9}>
 
 
-							<div>
+							<Paper  style={{padding:15}} zDepth={3}>
 
 								{this.props.data.map(function(section, i) {
 									return(
@@ -110,9 +110,9 @@ class StickySectionNavigation extends React.Component
 											</Sticky>
 
 
-											<Waypoint onPositionChange={({ previousPosition, currentPosition }) => { 
-													that.handleSectionWaypointChange(i, currentPosition); 
-												}} 
+											<Waypoint onPositionChange={({ previousPosition, currentPosition }) => {
+													that.handleSectionWaypointChange(i, currentPosition);
+												}}
 												topOffset={that.props.topOffset} />
 											<div>
 												<div id={section.id} style={styles.sectionPositionIndicator} />
@@ -121,14 +121,13 @@ class StickySectionNavigation extends React.Component
 										</StickyContainer>
 									)
 								})}
-							</div>
+							</Paper>
 
 						</Col>
 
 						<Col xs={12}  md={3} >
-							<AutoAffix 
-				                viewportOffsetTop={this.props.topOffset + 15}>
-								<Nav bsStyle="pills" stacked activeKey={this.state.currentActiveSection} style={styles.secondaryNav} className="stickySecondaryNav">
+							<AutoAffix viewportOffsetTop={this.props.topOffset + 15}>
+								<Nav bsStyle="pills" stacked activeKey={this.state.currentActiveSection} className="stickySecondaryNav">
 									{this.props.data.map(function(section, i) {
 										return(
 											<NavItem  key={i} eventKey={i + 1} href={"#" + section.id} >{section.title}</NavItem>

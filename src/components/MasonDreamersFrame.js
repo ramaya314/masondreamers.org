@@ -1,7 +1,7 @@
 import React from 'react';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import getMuiTheme from '@material-ui/core/styles/getMuiTheme';
 
 import AppThemeMason from '../themes/AppThemeMason';
 
@@ -14,36 +14,10 @@ class MasonDreamersFrame extends React.Component
 			mainBody: {
 				font: '17px/1 "Oxygen", sans-serif',
 				color: '#7c7c7c',
+				background: '#ddd',
 			},
 		}
 		return styles;
-	}
-
-	componentWillMount() {
-		this.createMutationObserver();
-	}
-
-	createMutationObserver() {
-		var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
-
-		if (MutationObserver){
-		    var target = document.querySelector('body'),
-
-		        config = {
-		            attributes            : true,
-		            attributeOldValue     : false,
-		            characterData         : true,
-		            characterDataOldValue : false,
-		            childList             : true,
-		            subtree               : true
-		        },
-
-		        observer = new MutationObserver(function(mutations) {
-		            window.parent.postMessage('[iframeResize]'+document.body.offsetHeight,'*');
-		        });
-
-		    observer.observe(target, config);
-		}
 	}
 
 	render() {

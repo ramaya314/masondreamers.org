@@ -1,93 +1,52 @@
 import React from 'react';
 
-import Loading from 'react-loading';
-
-import Spacer from "../components/Spacer";
-import GalleryCollection from "../components/GalleryCollection";
-
 import MainNavBar from '../components/MainNavBar';
-import MainFooter from '../components/MainFooter';
 
+import MetaTags from 'react-meta-tags';
 import { Grid, Col, Row } from 'react-bootstrap';
+import Paper from '@material-ui/core/Paper';
 
+import {
+	Spacer,
+	DataContainer,
+	GalleryCollection
+} from 'kokolib';
 
 class GalleryPage extends React.Component
 {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			data: [],
-			isLoading : true,
-		}
-	}   
-
-	componentWillMount() {
-		this.getFiles();
-	}
-
-	getFiles() {
-
-		let host = window.location.protocol + "//" +
-					window.location.hostname +
-					(window.location.hostname.toLowerCase().indexOf('localhost') >= 0 ? ":4000" :
-						(window.location.port ? ":" + window.location.port : ""));
-
-		let action = "/GetGalleryAlbums";
-
-		let fullRequest = host + action;
-		var that = this;
-
-		fetch(fullRequest, {
-			method : "GET",
-		}).then(function(res) {
-			if (res.ok) {
-				res.json().then(function(json) {
-					console.log(json);
-					that.setState({
-						data : json,
-						isLoading: false,
-					});
-				}); 
-			} else if (res.status === 401) {
-				console.log(res);
-			}
-		}, function(e) {
-			console.log(e);
-		});
-	}
-
 
 	render() {
 
+		let that = this;
 		return(
 			<div>
 
-	  			<MainNavBar backgroundImage="/images/wallPainting.jpg" pageTitle="Gallery" />
+	  			<MainNavBar backgroundImage="/images/121517/DSC08856.jpg" pageTitle="Gallery" />
+
+
+				<MetaTags>
+					<title>Mason DREAMers | Gallery</title>
+					<meta id="ogDescription" name="ogDescription" property="og:description" content="Gallery of Pictures" />
+					<meta id="ogTitle" name="ogTitle" property="og:title" content="Gallery" />
+					<meta id="ogImage" name="ogImage" property="og:image" content="http://www.masondreamers.org/images/121517/DSC08856.jpg"  />
+				</MetaTags>
 
 				<Spacer space={30} />
 
 				<Grid className="mainPageContentGrid">
-					<Row>
-						<Col xs={12}>
-
-							<div style={{textAlign:'center', display:(this.state.isLoading ? "" : "none")}}>
-								<div style={{width:64,height:64,marginLeft:'auto',marginRight:'auto'}}>
-									<Loading type='spin' color='#000' />
-								</div>
-							</div>
-
-      						{!this.state.isLoading && 
-								<GalleryCollection data={this.state.data} match={this.props.match} />
-							}
-
-						</Col>
-					</Row>
+					<Paper  style={{padding:15}} elevation={3}>
+						<Row>
+							<Col xs={12}>
+								<DataContainer action="api/v1/GetGalleryAlbums"
+									resultRender={function(data) {
+										return (<GalleryCollection data={data} match={that.props.match} />);
+								}}>
+								</DataContainer>
+							</Col>
+						</Row>
+					</Paper>
 				</Grid>
-
-				<Spacer space={30} />
-
-		  		<MainFooter />
 			</div>
 		);
 	}
@@ -95,5 +54,3 @@ class GalleryPage extends React.Component
 
 
 export default GalleryPage;
-
-

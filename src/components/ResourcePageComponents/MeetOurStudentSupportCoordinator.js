@@ -3,24 +3,13 @@ import React from 'react';
 
 import {Col, Row, Image} from 'react-bootstrap';
 
-import Spacer from "../Spacer";
+import {
+	Spacer
+} from 'kokolib';
 
 class MeetOurStudentSupportCoordinator extends React.Component
 {
-
-
-	getStyles() {
-		
-		const styles = {
-		};
-		return styles;
-	}
-
-
 	render() {
-
-		const styles = this.getStyles();
-
 		return(
 			<div>
 
@@ -45,6 +34,7 @@ class MeetOurStudentSupportCoordinator extends React.Component
 					</Col>
 				</Row>
 
+				{/*}
 				<hr />
 
 				<Row>
@@ -65,7 +55,8 @@ class MeetOurStudentSupportCoordinator extends React.Component
 						</p>
 					</Col>
 				</Row>
-
+				*/}
+				
 			</div>
 		);
 	}

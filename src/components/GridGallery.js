@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Thumbnail, Modal, Carousel,
 			Col, Row } from 'react-bootstrap';
 
+//https://www.youtube.com/watch?v=_x3gitcwtAc&list=PL6gx4Cwl9DGBbSLZjvleMwldX8jGgXV6a&t=175
+
 class GridGallery extends Component {
 
 	constructor(props) {

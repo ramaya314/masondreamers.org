@@ -1,8 +1,12 @@
 import React from 'react';
 
-import Spacer from "../Spacer";
+import {
+	Spacer
+} from 'kokolib';
 
-import {Col, Row, Image} from 'react-bootstrap';
+import {Col, Row} from 'react-bootstrap';
+
+import '../../css/react-bootstrap-table.min.css';
 
 import UndocuAllyDirectoryPage from'../../pages/UndocuAllyDirectoryPage'
 

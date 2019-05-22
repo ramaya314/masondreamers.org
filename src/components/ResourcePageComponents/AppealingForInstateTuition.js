@@ -1,24 +1,13 @@
 import React from 'react';
 
-import Spacer from "../Spacer";
+import {
+	Spacer
+} from 'kokolib';
 
 
 class AppealingForInstateTuition extends React.Component
 {
-
-
-	getStyles() {
-		
-		const styles = {
-		};
-		return styles;
-	}
-
-
 	render() {
-
-		const styles = this.getStyles();
-
 		return(
 			<div style={{padding:15}}>
 				<Spacer space={10} />

@@ -1,7 +1,12 @@
-import React from 'react'
+import React from 'react';
 
+import Paper from '@material-ui/core/Paper';
+
+import PropTypes from 'prop-types';
 
 import { Thumbnail } from 'react-bootstrap';
+
+import {Utils} from 'kokolib';
 
 class SingleGridCell extends React.Component {
 
@@ -34,18 +39,35 @@ class SingleGridCell extends React.Component {
       width: this.props.cellSize,
       height: this.props.cellHeight,
       cursor: "pointer",
+      padding: 0
     }
 
     return (
       <li className='SingleGridCell' style={SingleGridCellStyle}  id={this.props.id}  onClick={this.cellClick.bind(this)}>
-        <div>
-            <Thumbnail src={(this.props.SingleGridCellData['profilePic'] ? this.props.SingleGridCellData['profilePic'] : '/images/generic-user-icon.jpg')} 
-                alt="" style={thumbNailStyle}>
-              <h3 >{this.props.SingleGridCellData['name']}</h3>
+        <Paper zDepth={2}>
+
+            <div dangerouslySetInnerHTML={{
+            __html: `
+              <style>
+                .SingleGridCell .caption { padding: 0}
+              </style>
+              `
+            }} />
+            <Thumbnail alt="" style={thumbNailStyle}>
+
+              <div style={{
+                width: '100%',
+                height: 180,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundImage: 'url(' + (this.props.SingleGridCellData['profilePic'] ? this.props.SingleGridCellData['profilePic'] : '/images/generic-user-icon.jpg') + ')'
+              }} />
+
+              <h3 >{Utils.getFirstWordOfString(this.props.SingleGridCellData['name'])}</h3>
               <p>{this.props.SingleGridCellData['position']}</p>
               <a href={"mailto:" + this.props.SingleGridCellData['email']}> {this.props.SingleGridCellData['email']} </a>
             </Thumbnail>
-        </div>
+        </Paper>
       </li>
     )
   }
@@ -91,11 +113,11 @@ class ReactExpandableGrid extends React.Component {
   componentWillUnmount () { }
 
   renderExpandedDetail (target) {
-    var thisId = target.id
-    var thisIdNumber = parseInt(thisId.substring(10))
-    var detail = document.getElementById('expandedDetail')
-    var ol = target.parentNode
-    var lengthOfList = parseInt(ol.childNodes.length)
+    var thisId = target.id;
+    var thisIdNumber = parseInt(thisId.substring(10), 10);
+    var detail = document.getElementById('expandedDetail');
+    var ol = target.parentNode;
+    var lengthOfList = parseInt(ol.childNodes.length, 10);
     var startingIndex = thisIdNumber + 1
 
     var insertedFlag = false
@@ -145,10 +167,14 @@ class ReactExpandableGrid extends React.Component {
 
   handleCellClick (event) {
     var target = event.currentTarget
-    var thisIdNumber = parseInt(event.currentTarget.id.substring(10))
+    var thisIdNumber = parseInt(event.currentTarget.id.substring(10), 10)
+
+    var missingDescription = !this.state.gridData[thisIdNumber]['bio'] || this.state.gridData[thisIdNumber]['bio'].length <= 0;
+
+
 
     if (this.state.expanded) { // expanded == true
-      if (this.state.selected_id === event.currentTarget.id) { // Clicking on already opened detail
+      if (this.state.selected_id === event.currentTarget.id || missingDescription) { // Clicking on already opened detail
         this.closeExpandedDetail()
         this.renderExpandedDetail(target)
       } else { // Clicking on a different thumbnail, when detail is already expanded
@@ -160,13 +186,13 @@ class ReactExpandableGrid extends React.Component {
           var description = document.getElementById('ExpandedDetailDescription')
           var title = document.getElementById('ExpandedDetailTitle')
           var img = document.getElementById('ExpandedDetailImage')
-          var DescriptionLink = document.getElementById('ExpandedDetailDescriptionLink')
+          //var DescriptionLink = document.getElementById('ExpandedDetailDescriptionLink')
           var DescriptionEmailLink = document.getElementById('ExpandedDetailDescriptionEmailLink')
-          var ImageLink = document.getElementById('ExpandedDetailImageLink')
-          var subTitle = document.getElementById('ExpandedDetailSubtitle') 
+          //var ImageLink = document.getElementById('ExpandedDetailImageLink')
+          var subTitle = document.getElementById('ExpandedDetailSubtitle')
           description.innerHTML = this.state.gridData[thisIdNumber]['bio'] ? this.state.gridData[thisIdNumber]['bio'] : '(No Bio Available)'
-          title.innerHTML = this.state.gridData[thisIdNumber]['name']
-          subTitle.innerHTML = this.state.gridData[thisIdNumber]['position'] 
+          title.innerHTML = Utils.getFirstWordOfString(this.state.gridData[thisIdNumber]['name'])
+          subTitle.innerHTML = this.state.gridData[thisIdNumber]['position']
           img.src = this.state.gridData[thisIdNumber]['profilePic'] ? this.state.gridData[thisIdNumber]['profilePic'] : 'images/generic-user-icon.jpg'
           DescriptionEmailLink.href = "mailto:" + this.state.gridData[thisIdNumber]['email']
           DescriptionEmailLink.innerHTML = this.state.gridData[thisIdNumber]['email']
@@ -177,7 +203,7 @@ class ReactExpandableGrid extends React.Component {
           detail.style.display = 'block'
         })
       }
-    } else { // expanded == false
+    } else if(!missingDescription) { // expanded == false
       this.setState({
         expanded: true,
         selected_id: event.currentTarget.id
@@ -186,13 +212,13 @@ class ReactExpandableGrid extends React.Component {
         var description = document.getElementById('ExpandedDetailDescription')
         var title = document.getElementById('ExpandedDetailTitle')
         var img = document.getElementById('ExpandedDetailImage')
-        var DescriptionLink = document.getElementById('ExpandedDetailDescriptionLink')
+        //var DescriptionLink = document.getElementById('ExpandedDetailDescriptionLink')
         var DescriptionEmailLink = document.getElementById('ExpandedDetailDescriptionEmailLink')
-        var ImageLink = document.getElementById('ExpandedDetailImageLink')
-        var subTitle = document.getElementById('ExpandedDetailSubtitle') 
+        //var ImageLink = document.getElementById('ExpandedDetailImageLink')
+        var subTitle = document.getElementById('ExpandedDetailSubtitle')
         description.innerHTML = this.state.gridData[thisIdNumber]['bio'] ? this.state.gridData[thisIdNumber]['bio'] : '(No Bio Available)'
-        title.innerHTML = this.state.gridData[thisIdNumber]['name'] 
-        subTitle.innerHTML = this.state.gridData[thisIdNumber]['position'] 
+        title.innerHTML = Utils.getFirstWordOfString(this.state.gridData[thisIdNumber]['name'])
+        subTitle.innerHTML = this.state.gridData[thisIdNumber]['position']
         img.src = this.state.gridData[thisIdNumber]['profilePic'] ? this.state.gridData[thisIdNumber]['profilePic'] : 'images/generic-user-icon.jpg'
         DescriptionEmailLink.href = "mailto:" + this.state.gridData[thisIdNumber]['email']
         DescriptionEmailLink.innerHTML = this.state.gridData[thisIdNumber]['email']
@@ -210,10 +236,13 @@ class ReactExpandableGrid extends React.Component {
     var idCounter = -1 // To help simplify mapping to object array indices. For example, <li> with 0th id corresponds to 0th child of <ol>
     var gridData = this.state.gridData
 
+
     for (var i in gridData) {
-      idCounter = idCounter + 1
-      var thisUniqueKey = 'grid_cell_' + idCounter.toString()
-      grid.push(<SingleGridCell handleCellClick={this.handleCellClick.bind(this)} key={thisUniqueKey} id={thisUniqueKey} cellMargin={this.props.cellMargin} SingleGridCellData={gridData[i]} cellSize={this.props.cellSize} cellHeight={this.props.cellHeight} />)
+      if(i != null) {
+        idCounter++;
+        var thisUniqueKey = 'grid_cell_' + idCounter.toString()
+        grid.push(<SingleGridCell handleCellClick={this.handleCellClick.bind(this)} key={thisUniqueKey} id={thisUniqueKey} cellMargin={this.props.cellMargin} SingleGridCellData={gridData[i]} cellSize={this.props.cellSize} cellHeight={this.props.cellHeight} />)
+      }
     }
 
     var cssforExpandedDetail = {
@@ -223,7 +252,7 @@ class ReactExpandableGrid extends React.Component {
       position: 'relative',
       padding: '20px',
       transition: 'display 2s ease-in-out 0.5s',
-      top:40,
+      top:10,
     }
 
     var cssforExpandedDetailImage = {
@@ -272,7 +301,8 @@ class ReactExpandableGrid extends React.Component {
       width: this.props.ExpandedDetail_right_width,
       height: '100%',
       float: 'right',
-      position: 'relative'
+      position: 'relative',
+      overflow: 'scroll',
     }
 
     var cssForDescriptionLink = {
@@ -280,6 +310,7 @@ class ReactExpandableGrid extends React.Component {
       cursor: 'pointer',
       position: 'absolute',
       bottom: 0,
+      left: '50%',
     }
 
     var cssForImageLink = {
@@ -324,7 +355,7 @@ class ReactExpandableGrid extends React.Component {
       <li style={cssforExpandedDetail} key='expandedDetail' id='expandedDetail'>
         <div id='ExpandedDetail_left'className='ExpandedDetail_left' style={cssforExpandedDetailLeft}>
           <a id='ExpandedDetailImageLink' style={cssForImageLink}>
-            <img id='ExpandedDetailImage' className='ExpandedDetailImage' style={cssforExpandedDetailImage} />
+            <img id='ExpandedDetailImage' className='ExpandedDetailImage' style={cssforExpandedDetailImage} alt=""/>
           </a>
           <a id='ExpandedDetailDescriptionEmailLink' style={cssForDescriptionLink}> Email </a>
         </div>
@@ -386,44 +417,44 @@ class ReactExpandableGrid extends React.Component {
 }
 
 ReactExpandableGrid.propTypes = {
-  gridData: React.PropTypes.string,
-  cellSize: React.PropTypes.number,
-  cellHeight: React.PropTypes.number,
-  cellMargin: React.PropTypes.number,
-  bgColor: React.PropTypes.string,
-  detailWidth: React.PropTypes.string, // in %
-  detailHeight: React.PropTypes.number,
-  detailBackgroundColor: React.PropTypes.string,
-  ExpandedDetail_right_width: React.PropTypes.string, // in %
-  ExpandedDetail_left_width: React.PropTypes.string, // in %
-  ExpandedDetail_description_bgColor: React.PropTypes.string,
-  ExpandedDetail_title_bgColor: React.PropTypes.string,
-  ExpandedDetail_img_bgColor: React.PropTypes.string,
-  ExpandedDetail_link_text: React.PropTypes.string,
-  ExpandedDetail_font_color: React.PropTypes.string,
-  ExpandedDetail_closeX_bool: React.PropTypes.bool,
-  show_mobile_style_from_width: React.PropTypes.number
+  gridData: PropTypes.string,
+  cellSize: PropTypes.number,
+  cellHeight: PropTypes.number,
+  cellMargin: PropTypes.number,
+  bgColor: PropTypes.string,
+  detailWidth: PropTypes.string, // in %
+  detailHeight: PropTypes.number,
+  detailBackgroundColor: PropTypes.string,
+  ExpandedDetail_right_width: PropTypes.string, // in %
+  ExpandedDetail_left_width: PropTypes.string, // in %
+  ExpandedDetail_description_bgColor: PropTypes.string,
+  ExpandedDetail_title_bgColor: PropTypes.string,
+  ExpandedDetail_img_bgColor: PropTypes.string,
+  ExpandedDetail_link_text: PropTypes.string,
+  ExpandedDetail_font_color: PropTypes.string,
+  ExpandedDetail_closeX_bool: PropTypes.bool,
+  show_mobile_style_from_width: PropTypes.number
 }
 
 var data = [
         {
-            "profilePic": "/images/generic-user-icon.jpg", 
-            "email": "ramaya2@gmu.edu", 
-            "name": "Generic Name Generic Last", 
+            "profilePic": "/images/generic-user-icon.jpg",
+            "email": "ramaya2@gmu.edu",
+            "name": "Generic Name Generic Last",
             "position": "Generic long position",
             "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
-            "profilePic": "/images/generic-user-icon.jpg", 
-            "email": "ramaya2@gmu.edu", 
-            "name": "Generic Name Generic Last", 
+            "profilePic": "/images/generic-user-icon.jpg",
+            "email": "ramaya2@gmu.edu",
+            "name": "Generic Name Generic Last",
             "position": "Generic long position",
             "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
-            "profilePic": "/images/generic-user-icon.jpg", 
-            "email": "ramaya2@gmu.edu", 
-            "name": "Generic Name Generic Last", 
+            "profilePic": "/images/generic-user-icon.jpg",
+            "email": "ramaya2@gmu.edu",
+            "name": "Generic Name Generic Last",
             "position": "Generic long position",
             "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         }

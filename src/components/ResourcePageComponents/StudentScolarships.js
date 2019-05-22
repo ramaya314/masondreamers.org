@@ -2,7 +2,9 @@ import React from 'react';
 
 import {Col, Row, Image} from 'react-bootstrap';
 
-import Spacer from "../Spacer";
+import {
+	Spacer
+} from 'kokolib';
 
 class StudentScolarships extends React.Component
 {
@@ -37,15 +39,13 @@ class StudentScolarships extends React.Component
 						</h2>
 
 						<ol>
-							<li style={styles.listItemStyle} ><a target="_new" href="https://scholarships.gmsp.org/Program/Details/7123dfc6-da55-44b7-a900-0c08ba1ac35c"> Gates Millenium Scholars </a> <b>(Deadline 01/13/16​)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="http://www.hitched.co.uk/wedding-scholarship/"> The Hitched Wedding Scholarship </a> <b> (Deadline 11/30/17)</b></li>
 
-							<li style={styles.listItemStyle} ><a target="_new" href="http://www.hitched.co.uk/wedding-scholarship/"> The Hitched Wedding Scholarship </a> <b> (Deadline 11/30/16)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="https://rmhc-nola.org/2015-2016-scholarship-info/"> McDonalds Scholarship  </a> <b>(Deadline 01/20/18)</b></li>
 
-							<li style={styles.listItemStyle} ><a target="_new" href="https://rmhc-nola.org/2015-2016-scholarship-info/"> McDonalds Scholarship  </a> <b>(Deadline 01/20/16)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="http://www.jackierobinson.org/apply/applicants/"> Jackie Robinson Foundation </a> <b>(Deadline 02/15/18)</b></li>
 
-							<li style={styles.listItemStyle} ><a target="_new" href="http://www.jackierobinson.org/apply/applicants/"> Jackie Robinson Foundation </a> <b>(Deadline 02/15/17)</b></li>
-
-							<li style={styles.listItemStyle} ><a target="_new" href="http://www.ca-core.org/yahoo_site_admin/assets/docs/CORE_QLC_Y8_Application.35173627.pdf"> Chicano Organizing & Research in Education (CORE) </a> <b>(Deadline 02/27/16 For undocumented high school students)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="http://www.ca-core.org/yahoo_site_admin/assets/docs/CORE_QLC_Y8_Application.35173627.pdf"> Chicano Organizing & Research in Education (CORE) </a> <b>(Deadline 02/27/18 For undocumented high school students)</b></li>
 						</ol>
 
 	  					<Spacer space={30} />
@@ -55,33 +55,31 @@ class StudentScolarships extends React.Component
 						</h2>
 
 						<ol>
-							<li style={styles.listItemStyle} ><a target="_new" href="http://www.hitched.co.uk/wedding-scholarship/"> The Hitched Wedding Scholarship </a> <b>(Deadline 11/30/16)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="http://www.hitched.co.uk/wedding-scholarship/"> The Hitched Wedding Scholarship </a> <b>(Deadline 11/30/17)</b></li>
 
-							<li style={styles.listItemStyle} ><a target="_new" href="http://www.beadonor.org/news-a-events/scholarship-information"> Beadonor Scholarship </a> <b>(Deadline 03/31/16)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="http://www.beadonor.org/news-a-events/scholarship-information"> Beadonor Scholarship </a> <b>(Deadline 03/31/18)</b></li>
 
-							<li style={styles.listItemStyle} ><a target="_new" href="http://www.dreamproject-va.org/dream-scholarship/how-to-apply/"> Dream Project Scholarship </a> <b>(Deadline 03/01/16)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="http://www.dreamproject-va.org/dream-scholarship/how-to-apply/"> Dream Project Scholarship </a> <b>(Deadline 02/15/18)</b></li>
 
-							<li style={styles.listItemStyle} ><a target="_new" href="http://hsf.net/en/scholarships/"> Hispanic Scholarship Fund </a> <b>(Deadline 03/30/17)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="http://hsf.net/en/scholarships/"> Hispanic Scholarship Fund </a> <b>(Deadline 04/26/18)</b></li>
 
-							<li style={styles.listItemStyle} ><a target="_new" href="http://www.cbcfinc.org/scholarships/"> Congressional Black Caucus Foundation </a> <b>(Deadline 02/28/16)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="http://www.cbcfinc.org/scholarships/"> Congressional Black Caucus Foundation </a> <b>(Deadline 04/21/18)</b></li>
 
-							<li style={styles.listItemStyle} ><a target="_new" href="http://www.apiasf.org/scholarship_apiasf.html"> Asian & Pacific-Islander American Scholarship Fund </a> <b>(Deadline 01/11/117)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="http://www.apiasf.org/scholarship_apiasf.html"> Asian & Pacific-Islander American Scholarship Fund </a> <b>(Deadline 01/18/18)</b></li>
 
-							<li style={styles.listItemStyle} ><a target="_new" href="http://www.thecollegecompanion.com/scott-and-stringfellow-educational-foundation-scholarship/"> BB&T Scott & Stringfellow Scholarship </a> <b>(Deadline 01/29/16)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="http://www.thecollegecompanion.com/scott-and-stringfellow-educational-foundation-scholarship/"> BB&T Scott & Stringfellow Scholarship </a> <b>(Deadline 01/31/18)</b></li>
 
-							<li style={styles.listItemStyle} ><a target="_new" href="http://sbeavergtchs.weebly.com/scholarship-information/category/dennys-scholarships"> Denny’s Scholarship  </a> <b>(Deadline 03/25/16)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="http://sbeavergtchs.weebly.com/scholarship-information/category/dennys-scholarships"> Denny’s Scholarship  </a> <b>(Deadline 03/25/18)</b></li>
 
-							<li style={styles.listItemStyle} ><a target="_new" href="http://www.jimmyranefoundation.org/scholarships"> Jimmy Rane Foundation </a> <b>(Deadline 02/07/17)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="http://www.jimmyranefoundation.org/scholarships"> Jimmy Rane Foundation </a> <b>(Deadline 02/08/18)</b></li>
 
-							<li style={styles.listItemStyle} ><a target="_new" href="http://vapeo.org/VSSFApplication2016-17.pdf"> Virginia PEO Sisterhood</a> <b>(Deadline 02/15/16)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="http://asianpacificfund.org/wp-content/uploads/2015/12/SCH-FLYER-2016.pdf"> Asian Pacific Fund </a> <b>(Deadline 01/18/18 must be a permanent resident or citizen unless otherwise)</b></li>
 
-							<li style={styles.listItemStyle} ><a target="_new" href="http://asianpacificfund.org/wp-content/uploads/2015/12/SCH-FLYER-2016.pdf"> Asian Pacific Fund </a> <b>(Deadline 02/19/16 must be a permanent resident or citizen unless otherwise)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="https://www.shawncartersf.com/scholarship-fund/#app"> Shawn Carter Foundation </a> <b>(Deadline 04/30/18 only open for 1 month)</b></li>
 
-							<li style={styles.listItemStyle} ><a target="_new" href="https://www.shawncartersf.com/scholarship-fund/#app"> Shawn Carter Foundation </a> <b>(Deadline 04/30/16 only open for 1 month)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="http://www.collegefund.org/students_and_alumni/content/scholarships"> American Indian College Fund </a> <b>(Deadline 05/31/18 US citizenship required line on webpage)</b></li>
 
-							<li style={styles.listItemStyle} ><a target="_new" href="http://www.collegefund.org/students_and_alumni/content/scholarships"> American Indian College Fund </a> <b>(Deadline 04/30/16 US citizenship required line on webpage)</b></li>
-
-							<li style={styles.listItemStyle} ><a target="_new" href="http://sdxdc.org/SDXDCScholarship.html"> Sigma Delta Chi Foundation of Washington D.C. </a> <b>(Deadline 02/23/16)</b></li>
+							<li style={styles.listItemStyle} ><a target="_new" href="http://sdxdc.org/SDXDCScholarship.html"> Sigma Delta Chi Foundation of Washington D.C. </a> <b>(Deadline 02/28/18)</b></li>
 						</ol>
 
 	  					<Spacer space={30} />

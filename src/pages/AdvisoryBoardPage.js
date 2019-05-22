@@ -2,10 +2,16 @@ import React from 'react';
 
 import AdvisoryBoardTable from '../components/AdvisoryBoardTable';
 
+import MetaTags from 'react-meta-tags';
 import MainNavBar from '../components/MainNavBar';
-import MainFooter from '../components/MainFooter';
+
+import {
+	Spacer
+} from 'kokolib';
+
 
 import { Grid, Col, Row } from 'react-bootstrap';
+import Paper from '@material-ui/core/Paper';
 
 class AdvisoryBoardPage extends React.Component
 {
@@ -15,44 +21,34 @@ class AdvisoryBoardPage extends React.Component
 		this.state = {
 			isLoading : true,
 		}
-	}   
-
-
-	getStyles() {
-		const styles = {
-			spacer: {
-				marginTop: 30,
-			},
-		};
-		return styles;
-	}
-
-	componentWillMount() {
 	}
 
 	render() {
-
-		const styles = this.getStyles();
-
 		return(
-			<div>
+      		<div>
+
 
 	  			<MainNavBar backgroundImage="/images/headerBackground.jpg" pageTitle="Advisory Board" />
 
-	  			<div style={styles.spacer} />
+				<MetaTags>
+					<title>Mason DREAMers | Advisory Board</title>
+					<meta id="ogDescription" name="ogDescription" property="og:description" content="Mason DREAMers Advisory Board" />
+					<meta id="ogTitle" name="ogTitle" property="og:title" content="Advisory Board" />
+					<meta id="ogImage" name="ogImage" property="og:image" content="http://www.masondreamers.org/images/logoWhite.png" />
+				</MetaTags>
+
+				<Spacer space={30} />
 
 				<Grid className="mainPageContentGrid">
-					<Row>
-						<Col xs={12} >
-								<AdvisoryBoardTable />
-						</Col>
-					</Row>
+					<Paper  style={{padding:15}} zDepth={3}>
+						<Row>
+							<Col xs={12} >
+									<AdvisoryBoardTable />
+							</Col>
+						</Row>
+					</Paper>
 				</Grid>
-
-	  			<div style={styles.spacer} />
-
-		  		<MainFooter />
-			</div>
+      		</div>
 		);
 	}
 }

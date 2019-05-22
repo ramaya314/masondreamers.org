@@ -1,9 +1,14 @@
 import React from 'react';
 
-import MasonDreamersContactPage from './MasonDreamersContactPage';
-
+import MetaTags from 'react-meta-tags';
 import MainNavBar from '../components/MainNavBar';
-import MainFooter from '../components/MainFooter';
+
+import {
+	ContactForm,
+	Spacer
+} from 'kokolib';
+
+import Paper from '@material-ui/core/Paper';
 
 import { Grid, Col, Row } from 'react-bootstrap';
 
@@ -15,43 +20,32 @@ class ContactUsPage extends React.Component
 		this.state = {
 			isLoading : true,
 		}
-	}   
-
-
-	getStyles() {
-		const styles = {
-			spacer: {
-				marginTop: 30,
-			},
-		};
-		return styles;
-	}
-
-	componentWillMount() {
 	}
 
 	render() {
-
-		const styles = this.getStyles();
-
 		return(
 			<div>
 
-	  			<MainNavBar backgroundImage="/images/expo17.jpg" pageTitle="Contact Us" />
+	  			<MainNavBar backgroundImage="/images/expo171.jpg" pageTitle="Contact Us" />
 
-	  			<div style={styles.spacer} />
+				<MetaTags>
+					<title>Mason DREAMers | Contact Us</title>
+					<meta id="ogDescription" name="ogDescription" property="og:description" content="Contact Mason DREAMers" />
+					<meta id="ogTitle" name="ogTitle" property="og:title" content="Contact Us" />
+					<meta id="ogImage" name="ogImage" property="og:image" content="http://www.masondreamers.org/images/expo171.jpg" />
+				</MetaTags>
+
+				<Spacer space={30} />
 
 				<Grid className="mainPageContentGrid">
-					<Row>
-						<Col xs={12} >
-								<MasonDreamersContactPage />
-						</Col>
-					</Row>
+					<Paper  style={{padding:15}} elevation={3}>
+						<Row>
+							<Col xs={12} >
+								<ContactForm useRecaptcha={false} recipientEmail="gmumasondreamers@gmail.com" />
+							</Col>
+						</Row>
+					</Paper>
 				</Grid>
-
-	  			<div style={styles.spacer} />
-
-		  		<MainFooter />
 			</div>
 		);
 	}
